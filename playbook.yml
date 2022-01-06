@@ -12,4 +12,3 @@
       validate_certs: no
       namespace: default
       definition: ""
-
