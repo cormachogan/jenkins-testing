@@ -1,4 +1,4 @@
-- hosts: localhost
+- hosts: jenkins.rainpole.com
   tasks:
   - name: Deploy the service
     k8s:
