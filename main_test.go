@@ -7,21 +7,13 @@
 package main
 
 import (
-   "log"
-   "net/http"
+   "testing"
 )
 
-type Server struct{}
-
-func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-   w.WriteHeader(http.StatusOK)
-   w.Header().Set("Content-Type", "application/json")
-   w.Write([]byte(`{"message": "hello world"}`))
-}
-
-func main() {
-   s := &Server{}
-   http.Handle("/", s)
-   log.Fatal(http.ListenAndServe(":8080", nil))
-}
+func TestDecode(t* testing.T {
+   if post.Content != "Hello World!" {
+      t.Error ("Wrong content, was expecting 'Hello World!' but go ",
+      post.Content)
+   }
+})
 
