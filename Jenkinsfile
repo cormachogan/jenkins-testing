@@ -17,9 +17,10 @@ pipeline {
                sh 'mkdir -p ${GOPATH}/src/hello-world'
                // Copy all files in our Jenkins workspace to our project directory.               
                sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src/hello-world'
+               sh 'export GO111MODULE=auto'
                // Build the app.
                sh 'go build'              
-           }    
+           }
        }
        stage('Test') {
            agent {
@@ -35,6 +36,7 @@ pipeline {
                sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src/hello-world'
                // Remove cached test results.
                sh 'go clean -cache'
+               sh 'export GO111MODULE=auto'
                // Run Unit Tests.
                sh 'go test ./... -v -short'           
            }
