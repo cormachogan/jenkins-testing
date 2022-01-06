@@ -19,7 +19,6 @@ pipeline {
                sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src/hello-world'
                // Build the app.
                sh 'git init'
-               sh 'git remote add origin https://github.com/cormachogan/jenkins-testing'
                sh 'go mod init'
                sh 'go build'              
            }
