@@ -11,6 +11,7 @@ import (
    "strings"
 )
 
+type Server struct{}
 
 func TestServeHTTP(t *testing.T) {
         s := &Server{}
