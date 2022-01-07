@@ -5,7 +5,6 @@
 package main
 
 import (
-   "log"
    "net/http"
    "net/http/httptest"
    "testing"
@@ -14,20 +13,10 @@ import (
 
 type Server struct{}
 
-// statusHandler is an http.Handler that writes an empty response using itself
-// as the response status code.
-type statusHandler int
-
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
    w.WriteHeader(http.StatusOK)
    w.Header().Set("Content-Type", "application/json")
-   w.Write([]byte(`{"message": "hello world"}`))
-}
-
-func main() {
-   s := &Server{}
-   http.Handle("/", s)
-   log.Fatal(http.ListenAndServe(":8080", nil))
+   w.Write([]byte(`{"message": "Hello World"}`))
 }
 
 func TestServeHTTP(t *testing.T) {
@@ -36,6 +25,6 @@ func TestServeHTTP(t *testing.T) {
 	w := httptest.NewRecorder()
 	s.ServeHTTP(w, r)
 	if b := w.Body.String(); !strings.Contains(b, "hello world") {
-		t.Fatalf("body = %s, want no", b)
+		t.Fatalf("body = %s, want hello world", b)
 	}
 }
