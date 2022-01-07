@@ -22,4 +22,3 @@ func main() {
    http.Handle("/", s)
    log.Fatal(http.ListenAndServe(":8080", nil))
 }
-

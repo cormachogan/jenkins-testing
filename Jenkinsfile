@@ -36,7 +36,7 @@ pipeline {
                // Remove cached test results.
                sh 'go clean -cache'
                // Run Unit Tests.
-               sh 'go test ./*_test.go -v -short'           
+               sh 'go test ./... -v -short'           
            }
        }
        stage('Publish') {
@@ -57,7 +57,7 @@ pipeline {
            steps {
                script{
                    def image_id = registry + ":$BUILD_NUMBER"
-                   sh "ansible-playbook  playbook.yml --extra-vars \"image_id=${image_id}\" -vvv"
+                   sh "ansible-playbook  playbook.yml --extra-vars \"image_id=${image_id}\""
                }
            }
        }
