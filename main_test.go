@@ -5,6 +5,7 @@
 package main
 
 import (
+   "log"
    "net/http"
    "net/http/httptest"
    "testing"
